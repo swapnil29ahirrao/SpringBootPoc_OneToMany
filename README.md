@@ -1,8 +1,8 @@
 # SpringBootPoc_OneToMany
 /**********************************************************************************************************************************/
-Request Creation from Employee side:
-URL: http://localhost:8080/Employee
-Json: 
+Request Creation from Employee side:                                                                                                
+URL: http://localhost:8080/Employee                                                                                                     
+Json:                                                                                                                               
 {
     "emp_id": 2,
     "emp_name": "test",
@@ -20,9 +20,9 @@ Json:
 }
 
 /**********************************************************************************************************************************/
-Request Creation from Address side:
-URL: http://localhost:8080/address
-Json:
+Request Creation from Address side:                                                                                                 
+URL: http://localhost:8080/address                                                                                                  
+Json:                                                                                                                               
 {
     "add_Id": 2,
     "addressType": "off",
