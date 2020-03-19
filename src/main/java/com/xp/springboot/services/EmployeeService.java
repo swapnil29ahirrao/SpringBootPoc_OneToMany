@@ -1,4 +1,4 @@
-package com.xp.java.springboot.services;
+package com.xp.springboot.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.xp.java.springboot.entities.Employee;
-import com.xp.java.springboot.repository.EmployeeRepository;
+import com.xp.springboot.entities.Employee;
+import com.xp.springboot.exception.EmployeeNotFoundException;
+import com.xp.springboot.repository.EmployeeRepository;
 
 @Service
 public class EmployeeService {
@@ -19,15 +20,12 @@ public class EmployeeService {
 		return empRepository.findAll();
 	}
 	
-	public Employee getEmployee(int empId) throws Exception {
+	public Employee getEmployee(int empId) {
 		Optional<Employee> emp=empRepository.findById(empId);
-		if(emp.isPresent()) {
+		if(emp.isPresent()) 
 			return emp.get();
-		}
 		else
-		{
-			throw new Exception("No such emp present");
-		}
+			throw new EmployeeNotFoundException(empId);
 	}
 	
 	public Employee createOrUpdateEmployee(Employee employee) {
@@ -48,17 +46,13 @@ public class EmployeeService {
 		}
 	}
 	
-	public void deleteEmployee(int empId) throws Exception {
-		
+	public void deleteEmployee(int empId) {
 		Optional<Employee> emp=empRepository.findById(empId);
 		
-		if(emp.isPresent()) {
+		if(emp.isPresent())
 			empRepository.deleteById(empId);
-		}
 		else
-		{
-			throw new Exception("Entity does not exist");
-		}
+			throw new EmployeeNotFoundException(empId);
 	}
 
 }

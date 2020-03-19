@@ -1,4 +1,4 @@
-package com.xp.java.springboot.entities;
+package com.xp.springboot.entities;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

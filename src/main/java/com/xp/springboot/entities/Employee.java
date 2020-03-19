@@ -1,4 +1,4 @@
-package com.xp.java.springboot.entities;
+package com.xp.springboot.entities;
 
 import java.util.ArrayList;
 import java.util.List;
