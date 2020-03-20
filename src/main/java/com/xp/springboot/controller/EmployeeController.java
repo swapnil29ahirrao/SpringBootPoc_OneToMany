@@ -2,6 +2,7 @@ package com.xp.springboot.controller;
 
 import java.util.List;
 
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.xp.springboot.dto.EmployeeDTO;
 import com.xp.springboot.entities.Employee;
 import com.xp.springboot.services.EmployeeService;
 
@@ -61,8 +63,9 @@ public class EmployeeController {
 	 */
 	@PostMapping
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ResponseEntity<Employee> createOrUpdateEmployee(@RequestBody Employee employee){
-		Employee emp=empService.createOrUpdateEmployee(employee);
+	public ResponseEntity<Employee> createOrUpdateEmployee(@RequestBody EmployeeDTO employee){
+		Employee employee1=new DozerBeanMapper().map(employee, Employee.class);
+		Employee emp=empService.createOrUpdateEmployee(employee1);
 		return new ResponseEntity<>(emp,HttpStatus.OK);
 	}
 	
