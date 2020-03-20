@@ -53,12 +53,12 @@ public class EmployeeService {
 	 * @return Employee
 	 */
 	public Employee createOrUpdateEmployee(Employee employee) {
-		Optional<Employee> emp=empRepository.findById(employee.getEmp_id());
+		Optional<Employee> emp=empRepository.findById(employee.getEmpId());
 		if(emp.isPresent()) {
 			Employee empEntity=emp.get();
 			empEntity.setAge(employee.getAge());
-			empEntity.setEmp_name(employee.getEmp_name());
-			empEntity.setEmp_salary(employee.getEmp_salary());
+			empEntity.setEmpName(employee.getEmpName());
+			empEntity.setEmpSalary(employee.getEmpSalary());
 			
 			empEntity=empRepository.save(empEntity);
 			return empEntity;

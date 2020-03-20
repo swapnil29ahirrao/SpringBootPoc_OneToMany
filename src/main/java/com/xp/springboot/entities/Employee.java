@@ -5,11 +5,9 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,14 +25,14 @@ public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int emp_id;
-	private String emp_name;
-	private int emp_salary;
+	private int empId;
+	private String empName;
+	private int empSalary;
 	private int age;
 	
 	@OneToMany(mappedBy = "emp",cascade = CascadeType.ALL)
 	@JsonManagedReference
-	List<Address> addList=new ArrayList<Address>();
+	List<Address> addList=new ArrayList<>();
 	
 	
 	public List<Address> getAddList() {
@@ -47,11 +45,11 @@ public class Employee {
 	}
 
 
-	public Employee(int emp_id, String emp_name, int emp_salary, int age, List<Address> addList) {
+	public Employee(int empId, String empName, int empSalary, int age, List<Address> addList) {
 		super();
-		this.emp_id = emp_id;
-		this.emp_name = emp_name;
-		this.emp_salary = emp_salary;
+		this.empId = empId;
+		this.empName = empName;
+		this.empSalary = empSalary;
 		this.age = age;
 		this.addList = addList;
 	}
@@ -59,36 +57,48 @@ public class Employee {
 
 	public Employee() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public int getEmp_id() {
-		return emp_id;
+
+
+	public int getEmpId() {
+		return empId;
 	}
-	public void setEmp_id(int emp_id) {
-		this.emp_id = emp_id;
+
+
+	public void setEmpId(int empId) {
+		this.empId = empId;
 	}
-	public String getEmp_name() {
-		return emp_name;
+
+
+	public String getEmpName() {
+		return empName;
 	}
-	public void setEmp_name(String emp_name) {
-		this.emp_name = emp_name;
+
+
+	public void setEmpName(String empName) {
+		this.empName = empName;
 	}
-	public int getEmp_salary() {
-		return emp_salary;
+
+
+	public int getEmpSalary() {
+		return empSalary;
 	}
-	public void setEmp_salary(int emp_salary) {
-		this.emp_salary = emp_salary;
+
+
+	public void setEmpSalary(int empSalary) {
+		this.empSalary = empSalary;
 	}
+
+
 	public int getAge() {
 		return age;
 	}
+
+
 	public void setAge(int age) {
 		this.age = age;
 	}
-	@Override
-	public String toString() {
-		return "Employee [emp_id=" + emp_id + ", emp_name=" + emp_name + ", emp_salary=" + emp_salary + ", age=" + age
-				+ "]";
-	}
+	
+	
 	
 }

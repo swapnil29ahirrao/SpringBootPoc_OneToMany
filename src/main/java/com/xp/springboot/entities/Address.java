@@ -2,7 +2,6 @@ package com.xp.springboot.entities;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +23,7 @@ public class Address {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int add_Id;
+	private int addId;
 	
 	private String addressType;
 	private String lane;
@@ -40,9 +39,9 @@ public class Address {
 		super();
 	}
 
-	public Address(int add_Id, String addressType, String lane, String state, int pincode, Employee emp) {
+	public Address(int addId, String addressType, String lane, String state, int pincode, Employee emp) {
 		super();
-		this.add_Id = add_Id;
+		this.addId = addId;
 		this.addressType = addressType;
 		this.lane = lane;
 		this.state = state;
@@ -50,26 +49,12 @@ public class Address {
 		this.emp = emp;
 	}
 
-
-
-	public Employee getEmp() {
-		return emp;
+	public int getAddId() {
+		return addId;
 	}
 
-
-
-	public void setEmp(Employee emp) {
-		this.emp = emp;
-	}
-
-
-
-	public int getAdd_Id() {
-		return add_Id;
-	}
-
-	public void setAdd_Id(int add_Id) {
-		this.add_Id = add_Id;
+	public void setAddId(int addId) {
+		this.addId = addId;
 	}
 
 	public String getAddressType() {
@@ -104,12 +89,19 @@ public class Address {
 		this.pincode = pincode;
 	}
 
-	@Override
-	public String toString() {
-		return "Address [add_Id=" + add_Id + ", addressType=" + addressType + ", lane=" + lane + ", state=" + state
-				+ ", pincode=" + pincode + "]";
+	public Employee getEmp() {
+		return emp;
 	}
 
+	public void setEmp(Employee emp) {
+		this.emp = emp;
+	}
+
+	@Override
+	public String toString() {
+		return "Address [addId=" + addId + ", addressType=" + addressType + ", lane=" + lane + ", state=" + state
+				+ ", pincode=" + pincode + ", emp=" + emp + "]";
+	}
 	
 	
 	

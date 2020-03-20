@@ -36,7 +36,7 @@ class EmployeeServiceTest {
 		boolean exceptionThrown=false;
 		List<Address> addList=new ArrayList<>();
 		Address add1=new Address();
-		add1.setAdd_Id(1);
+		add1.setAddId(1);
 		add1.setAddressType("Home");
 		add1.setLane("1");
 		add1.setPincode(411015);
@@ -44,9 +44,9 @@ class EmployeeServiceTest {
 		addList.add(add1);
 		
 		Employee emp=new Employee();
-		emp.setEmp_name("Swap");
-		emp.setEmp_id(1);
-		emp.setEmp_salary(10000);
+		emp.setEmpName("Swap");
+		emp.setEmpId(1);
+		emp.setEmpSalary(10000);
 		emp.setAge(20);
 		add1.setEmp(emp);
 		emp.setAddList(addList);
@@ -62,15 +62,15 @@ class EmployeeServiceTest {
 		}
 		assertTrue(exceptionThrown);
 		
-		Mockito.when(empRepo.findById(emp.getEmp_id())).thenReturn(employee);
-		assertThat(empService.getEmployee(emp.getEmp_id())).isEqualTo(emp);
+		Mockito.when(empRepo.findById(emp.getEmpId())).thenReturn(employee);
+		assertThat(empService.getEmployee(emp.getEmpId())).isEqualTo(emp);
 	}
 	
 	@Test
 	void testGetAllEmployee() {
 		List<Address> addList=new ArrayList<>();
 		Address add1=new Address();
-		add1.setAdd_Id(1);
+		add1.setAddId(1);
 		add1.setAddressType("Home");
 		add1.setLane("1");
 		add1.setPincode(411015);
@@ -78,9 +78,9 @@ class EmployeeServiceTest {
 		addList.add(add1);
 		
 		Employee emp=new Employee();
-		emp.setEmp_name("Swap");
-		emp.setEmp_id(1);
-		emp.setEmp_salary(10000);
+		emp.setEmpName("Swap");
+		emp.setEmpId(1);
+		emp.setEmpSalary(10000);
 		emp.setAge(20);
 		add1.setEmp(emp);
 		emp.setAddList(addList);
@@ -95,7 +95,7 @@ class EmployeeServiceTest {
 	void testCreateOrUpdateEmployee() {
 		List<Address> addList=new ArrayList<>();
 		Address add1=new Address();
-		add1.setAdd_Id(1);
+		add1.setAddId(1);
 		add1.setAddressType("Home");
 		add1.setLane("1");
 		add1.setPincode(411015);
@@ -103,20 +103,20 @@ class EmployeeServiceTest {
 		addList.add(add1);
 		
 		Employee emp=new Employee();
-		emp.setEmp_name("Swap");
-		emp.setEmp_id(1);
-		emp.setEmp_salary(10000);
+		emp.setEmpName("Swap");
+		emp.setEmpId(1);
+		emp.setEmpSalary(10000);
 		emp.setAge(20);
 		add1.setEmp(emp);
 		emp.setAddList(addList);
 		Optional<Employee> empNull=Optional.ofNullable(null);
 		
-		Mockito.when(empRepo.findById(emp.getEmp_id())).thenReturn(empNull);
+		Mockito.when(empRepo.findById(emp.getEmpId())).thenReturn(empNull);
 		Mockito.when(empRepo.save(emp)).thenReturn(emp);
 		assertThat(empService.createOrUpdateEmployee(emp)).isEqualTo(emp);
 		
 		Optional<Employee> empOptional=Optional.ofNullable(emp);
-		Mockito.when(empRepo.findById(emp.getEmp_id())).thenReturn(empOptional);
+		Mockito.when(empRepo.findById(emp.getEmpId())).thenReturn(empOptional);
 		emp.setAge(30);
 		Mockito.when(empRepo.save(emp)).thenReturn(emp);
 		assertThat(empService.createOrUpdateEmployee(emp)).isEqualTo(emp);
@@ -127,7 +127,7 @@ class EmployeeServiceTest {
 		boolean exceptionThrown=false;
 		List<Address> addList=new ArrayList<>();
 		Address add1=new Address();
-		add1.setAdd_Id(1);
+		add1.setAddId(1);
 		add1.setAddressType("Home");
 		add1.setLane("1");
 		add1.setPincode(411015);
@@ -135,9 +135,9 @@ class EmployeeServiceTest {
 		addList.add(add1);
 		
 		Employee emp=new Employee();
-		emp.setEmp_name("Swap");
-		emp.setEmp_id(1);
-		emp.setEmp_salary(10000);
+		emp.setEmpName("Swap");
+		emp.setEmpId(1);
+		emp.setEmpSalary(10000);
 		emp.setAge(20);
 		add1.setEmp(emp);
 		emp.setAddList(addList);
@@ -153,9 +153,9 @@ class EmployeeServiceTest {
 		}
 		assertTrue(exceptionThrown);
 		
-		Mockito.when(empRepo.findById(emp.getEmp_id())).thenReturn(employee);
-		Mockito.doNothing().when(empRepo).deleteById(emp.getEmp_id());
-		assertThat(empService.deleteEmployee(emp.getEmp_id())).isEqualTo(true);
+		Mockito.when(empRepo.findById(emp.getEmpId())).thenReturn(employee);
+		Mockito.doNothing().when(empRepo).deleteById(emp.getEmpId());
+		assertThat(empService.deleteEmployee(emp.getEmpId())).isEqualTo(true);
 		
 	}
 }
