@@ -30,7 +30,6 @@ public class EmployeeService {
 	
 	public Employee createOrUpdateEmployee(Employee employee) {
 		Optional<Employee> emp=empRepository.findById(employee.getEmp_id());
-		
 		if(emp.isPresent()) {
 			Employee empEntity=emp.get();
 			empEntity.setAge(employee.getAge());
@@ -46,13 +45,16 @@ public class EmployeeService {
 		}
 	}
 	
-	public void deleteEmployee(int empId) {
+	public boolean deleteEmployee(int empId) {
 		Optional<Employee> emp=empRepository.findById(empId);
 		
-		if(emp.isPresent())
+		if(emp.isPresent()) {
 			empRepository.deleteById(empId);
-		else
+		}
+		else {
 			throw new EmployeeNotFoundException(empId);
+		}
+		return true;
 	}
 
 }
