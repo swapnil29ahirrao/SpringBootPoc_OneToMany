@@ -15,6 +15,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+/**
+ * Entity Class representing Employee
+ * 
+ * @author Swapnil Ahirrao
+ *
+ */
 @Entity
 @Table(name="Employee")
 public class Employee {

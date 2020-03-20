@@ -12,6 +12,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+/**
+ * Entity Class representing Address
+ * 
+ * @author Swapnil Ahirrao
+ *
+ */
 @Entity
 @Table(name="Address")
 public class Address {
@@ -32,7 +38,6 @@ public class Address {
 	
 	public Address() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Address(int add_Id, String addressType, String lane, String state, int pincode, Employee emp) {

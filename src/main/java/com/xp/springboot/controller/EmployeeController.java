@@ -17,6 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.xp.springboot.entities.Employee;
 import com.xp.springboot.services.EmployeeService;
 
+/**
+ * Represents Rest Controller for handling request coming to "/Employee" URL
+ *
+ */
+
 @RestController
 @RequestMapping("/Employee")
 public class EmployeeController {
@@ -24,23 +29,50 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService empService;
 	
+	/**
+	 * Method to return all the Employees present in DB
+	 * 
+	 * @return ResponseEntity<List<Employee>>
+	 */
 	@GetMapping
 	public ResponseEntity<List<Employee>> getAllEmployee(){
 		return new ResponseEntity<>(empService.getAllEmployee(),HttpStatus.OK);
 	}
 	
+	/**
+	 * Method to return specific employee matching passed employee ID
+	 * 
+	 * @param empId
+	 * @return ResponseEntity<Employee>
+	 */
 	@GetMapping("/{emp_id}")
 	public ResponseEntity<Employee> getEmployee(@PathVariable("emp_id") int empId){
 		Employee emp=empService.getEmployee(empId);
 		return new ResponseEntity<>(emp,HttpStatus.OK);
 	}
 	
+	/**
+	 * Method to create a Employee in DB if does not exist or update if already exists.
+	 * Accessible only to user with Role as Admin.
+	 * 
+	 * @param employee
+	 * @return ResponseEntity<Employee>
+	 * 
+	 */
 	@PostMapping
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Employee> createOrUpdateEmployee(@RequestBody Employee employee){
 		Employee emp=empService.createOrUpdateEmployee(employee);
 		return new ResponseEntity<>(emp,HttpStatus.OK);
 	}
+	
+	/**
+	 * Method to delete a employee from DB if provided employee id exists.
+	 * Accessible only to user with Role as Admin.
+	 * 
+	 * @param empId
+	 * @return
+	 */
 	
 	@DeleteMapping("/{emp_id}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
