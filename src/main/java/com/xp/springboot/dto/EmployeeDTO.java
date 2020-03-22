@@ -9,6 +9,7 @@ import com.xp.springboot.entities.Address;
 
 public class EmployeeDTO {
 	
+	private int empId;
 	private String empName;
 	private int empSalary;
 	private int age;
@@ -17,9 +18,9 @@ public class EmployeeDTO {
 	public EmployeeDTO() {
 		super();
 	}
-	
-	public EmployeeDTO(String empName, int empSalary, int age, List<Address> addList) {
+	public EmployeeDTO(int empId, String empName, int empSalary, int age, List<Address> addList) {
 		super();
+		this.empId = empId;
 		this.empName = empName;
 		this.empSalary = empSalary;
 		this.age = age;
@@ -50,7 +51,13 @@ public class EmployeeDTO {
 	public void setAddList(List<Address> addList) {
 		this.addList = addList;
 	}
-
+	
+	public int getEmpId() {
+		return empId;
+	}
+	public void setEmpId(int empId) {
+		this.empId = empId;
+	}
 	@Override
 	public String toString() {
 		return "EmployeeDTO [empName=" + empName + ", empSalary=" + empSalary + ", age=" + age + ", addList=" + addList

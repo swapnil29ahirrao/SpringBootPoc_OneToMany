@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.xp.springboot.dto.EmployeeDTO;
 import com.xp.springboot.entities.Employee;
 import com.xp.springboot.services.EmployeeService;
+import com.xp.springboot.utilities.ConversionUtility;
 
 /**
  * Represents Rest Controller for handling request coming to "/Employee" URL
@@ -64,8 +65,7 @@ public class EmployeeController {
 	@PostMapping
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Employee> createOrUpdateEmployee(@RequestBody EmployeeDTO employee){
-		Employee employee1=new DozerBeanMapper().map(employee, Employee.class);
-		Employee emp=empService.createOrUpdateEmployee(employee1);
+		Employee emp=empService.createOrUpdateEmployee(ConversionUtility.employeeDtoToEntity(employee));
 		return new ResponseEntity<>(emp,HttpStatus.OK);
 	}
 	
