@@ -3,7 +3,6 @@ package com.xp.springboot.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dozer.Mapping;
 
 import com.xp.springboot.entities.Address;
 
